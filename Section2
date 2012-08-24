@@ -1,0 +1,26 @@
+Section 2: Tow tank hardware
+
+Section 2.1.1: Mechanical Setup
+The tow tank system consists of a 6'x2'x2' water tank with 1/2" thick glass walls (2.1.2), a traverse, powered by belt with a brushed DC motor (2.1.3).  The carriage is guided along two sets of linear bearings and rods (2.1.4).  The main structure of the traverse is a set of two large aluminum C channels which are suspended by steel angle irons attached to the ground and wall (2.1.5).  There carriage has an arm extension and specimen holder which is capable of holding specimen during testing (2.1.6).  Lastly, a water containment system was built to ensure that if a leak or spill were to occur, catastrophic damage to other equipment would not occur (2.1.7).
+
+Section 2.1.2: Tank
+
+The water containment vessel to use is what seems to be a large fish tank measuring 6' by 2' (width) by 2' (height) with 1/2" thick walls.  There is a plastic structural ring around the outside and bottom of the tank.  The whole tank is supported by a steel angle iron frame.  The option to attach the traverse frame to the tank from is available.
+
+Section 2.1.3: Drivetrain
+
+The 1 degree of freedom (DOF) currently present in the tow tank is for movement along the length of the tow tank.  This is accomplished by a DC brushed motor actuating a set of pulleys which reduce the speed (approximately 17:1.  This was observed by simply turning the pulleys by hand.  A better inspection should be made before any relation is used between motor and carriage velocity to estimate the carriage velocity).  The output of this pulley system turns a toothed belt which is attached to the carriage.
+
+Section 2.1.4: Linear bearings and rods:
+
+The carriage moves along a set of linear bearings and rods.  The rods have a diameter of 0.75" and the distance between the two centers of the rods is approximately 9.375" (this is not exact).  Each rod is attached to the C-channel support structure by use of #10-32 fasteners with the distance between the inside fasters (width-wise) being 8.00".  The distance between fasteners along the length is 6.00".  This means that hardware can be attached to the main C-channel frame with use of these fasteners.
+
+Section 2.1.5: C-channel frame
+
+The main frame consists of two heavy-duty C-channels and an iron angle frame
+
+Section 2.1.6: Specimen holder
+
+There 
+
+Section 2.1.7: Water containment system

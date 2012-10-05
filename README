@@ -1,31 +1,42 @@
 Section 1: An Introduction
 
-This document serves as a comprehensive instruction manual for using the large tow-tank system in Link 280 at Syracuse University.  In this document, you will find descriptions of hardware and software
+This document serves as a comprehensive instruction manual for using the large tow-tank system in Link 280 at Syracuse University.  In this document, you will find descriptions of hardware and software.  It is the goal to establish this using some type of revision software.  The original document was maintained on github @ github.com/johndannenhoffer.
 
-Section 1.1: Document use
+1.1: Document use
 
-This document serves as a simple instruction manual for using the large tow-tank system in Link 280 at Syracuse University.  This was originally prepared by John Dannenhoffer IV.  To make changes, please indicate your name and contact information in the authors list (below) and specify which sections you contributed (and at what time these contributions were made).  If you have any questions regarding material, please direct your questions towards the most recent author of a section.
+This document serves as a simple instruction manual for using the large tow-tank system in Link 280 at Syracuse University.  This was originally prepared by John Dannenhoffer IV.  To make changes, please indicate your name and contact information in the authors list (below) and specify which sections you contributed (and at what time these contributions were made).  If you have any questions regarding material, please direct your questions towards the most recent author of a section.  
+
+1.1.2: Comments and plans for revision
+Comments or plans for revisions will be presented using c-style comments.  This means that lines are commented using "//" and whole blocks of comments are denoted using a leading "/*" and a trailing "*/"
+
+E.G.
+This is a fake section to show commenting conventions used in this document.
+//If you would like to commend a line, do so like this.
+
+This is a list of things that will change over time.  So far we have…
+foo
+bar
+foobar
+/* this is something I plan to add later and finalize, but isn't currently finished yet
+This is also something that should be continued */
+
+1.1.3: Revision control software
+
+By using revision control software, a document that goes through a number of changes can be maintained such that if undesirable changes are made, one can go back to previous versions.  Also, size is reduced by not having to keep archived files.  A free and easy to use software that implements revision control is Git and it's website github.com.  NOTE: To be free, an accounts material must remain open to the public.  This may be undesirable in the future.  There are two ways to use this software.  You can either download git to your local computer and manage your files (called repositories) that way or you can upload and download content through the web while logged into your account.
+
+Branching: To change a document for your own purposes, create a branch from some node of the project.  Go to github.com to learn about this process.
 
 Section 1.2 Authors
 
-John Dannenhoffer IV
+John Dannenhoffer IV (JFD4)
 315-256-3521
 johndannenhoffer@gmail.com
 
 Summer research student for the summer of 2012.  Original author
 
-Contributed sections:
-1 - 8/20/2012
-2 - 8/20/2012
-3 - 8/21/2012
-4 - 8/22/2012
-5 - 8/20/2012
-6 - 8/20/2012
-7 - 8/21/2012
-8 - 8/22/2012
-9 - 8/24/2012
-
-
+Revision History
+8/20/2012 - Created document and added sections 1,2,3, and 4 (JFD4)
+//10/6/2012 - Added pictures of hardware (JFD4)
 
 
 
@@ -33,20 +44,135 @@ Section 1.2: Contents
 
 This document contains a number of sections which describe different parts of the system (hardware, software, instructions,...)
 
-1. Introduction and setup:  Describes the use and maintenance of this document as well as provides a roadmap for use.  Some general tips for the tow tank are also included.
+1. Introduction:  Describes the use and maintenance of this document and its contents.
 
-2. Tow tank hardware:  The main hardware components are explained here
+2. Running the tow tank:  A quick how-to guide to operating the tow tank.
 
-3. Tow tank software. The software used to run and gather data from the tow tank is described here
+3. Tow tank hardware:  The main hardware components are explained here
 
-4. PIV.  The components used for flow visualization are described here
+4. Tow tank software. The software used to run and gather data from the tow tank is described here
 
-5. Beginning Electronics for Experimentalists: This serves as a guide to electronics for experimentalists, especially those not 
+/* To be added later
+5. PIV.  The components used for flow visualization are described here
 
-6. Instrumentation for Experimentalists: A brief description of instrumentation techniques useful for the experimentalist.  This and the next section are geared towards experimentalists working in fluid mechanics
+6. Beginning Electronics for Experimentalists: This serves as a guide to electronics for experimentalists, especially those not 
 
-7. Actuation for Experimentalists: A description of actuation techniques useful for the experimentalist.  Microcontrollers, DC Motors, solenoids, servos, LEDs, MOSFETs and H-Bridge drivers, amplifiers, and much more will be discussed.  This section, along with sections 5 can serve as a guide to designing actuation system for experimental use.
+7. Instrumentation for Experimentalists: A brief description of instrumentation techniques useful for the experimentalist.  This and the next section are geared towards experimentalists working in fluid mechanics
 
-8. Electronics Fabrication for Experimentalist:  This section describes experiential knowledge on different techniques to setup electronic apparatus for use in a lab setting.  Breadboarding, prototyping, soldering, and PCB (printed circuit board) production are discussed.
+8. Actuation for Experimentalists: A description of actuation techniques useful for the experimentalist.  Microcontrollers, DC Motors, solenoids, servos, LEDs, MOSFETs and H-Bridge drivers, amplifiers, and much more will be discussed.  This section, along with sections 5 can serve as a guide to designing actuation system for experimental use.
 
-9. Purchasing: Specific vendors and purchasing techniques for everything electronic are discussed here.  Take this section with a grain of salt, as the electronics landscape changes very quickly.
+9. Electronics Fabrication for Experimentalist:  This section describes experiential knowledge on different techniques to setup electronic apparatus for use in a lab setting.  Breadboarding, prototyping, soldering, and PCB (printed circuit board) production are discussed.
+
+10. Purchasing: Specific vendors and purchasing techniques for everything electronic are discussed here.  Take this section with a grain of salt, as the electronics landscape changes very quickly.
+
+*/
+
+Section 2: Running the tow tank
+
+This section describes the basics of running the tow tank.
+
+2.1: What is needed to run the tow tank?
+
+To run the tow tank, the following is needed to run the tow tank.
+
+-Arduino hardware.  An Arduino is a micro controller development board which is used for quick prototyping of embedded systems.  Digital and analog signals from hardware can interfaced with software written in an easy to write c-based language.  The Arduino board (there are a number of generations of boards with slight differences) has header pin outputs for almost all of its pins.  This allows the user to connect peripherals to the Arduino such a digital signals, analog signals, serial signals, power,…  The board that was used for the first generation of the tow tank was the Arduino Uno.  Also, because there is a large Arduino community, a number of open source hardware and software tools have been developed.  Supplementary hardware which are attached on top of an Arduino are called shields.  These can serve many purposes.  Also, a number of software libraries have been developed to do various things within software, such as numerical calculations, interfacing with certain hardware,…  This project uses one shield (below) and its corresponding library.
+
+-Arduino Software.  This is software that is used to communicate between a computer and the micro controller development board (Arduino).  Go to http://arduino.cc/en/Main/Software to download the latests version of the software. The Arduino software contains three important things.  1) An IDE (integrated development environment) to write and compile code in. 2) Drivers to communicate with the Arduino.  This allows you to upload your code onto the board.  It also allows for serial communication. 3) A serial monitor.  This allows the user to monitor the serial communication between the Arduino hardware and the computer.  This can be used very effectively as a debugging tool.
+
+-A power source.  You need a way to power the power electronics in the tow tank system.  An ATX power supply and breakout board is used for this purpose.
+
+-Pololu motor driver shield.  This "shield" is used in order to allow an Arduino to switch large amounts of current on an off.  http://www.pololu.com/catalog/product/2502  .  This shield plugs into the Arduino on top (it will only fit one way).  Through the connections with the Arduino, the program running on the Arduino controls the hardware on the shield and through this hardware, can control large amounts of current.  We use this to drive the motors for the tow tank.
+
+-Pololu motor driver shield library.  To control the motor driver shield, software needs to be written on the Arduino.  Because interfacing with the shield is not trivial, a software library has been developed to make interfacing with the shield easier.  This allows simple function calls in your code to control the shield.  Go to https://github.com/pololu/Dual-VNH5019-Motor-Shield to download the zip file (click the "zip" button next to the "http" button.   Unzip this file.  Move the folder "DualVNH5019MotorShield" to the appropriate folder which holds your Arduino libraries.  On a mac, the directory would be ~/Documents/Arduino/libraries/. On Windows, it would be My Documents\Arduino\libraries .  NOTE:  If this is the first library that you are adding, you may need to create the "libraries" folder in the appropriate place.  When you launch the Arduino application, and you click the "Sketch" drop down and "Import Libraries", you should see the DualVNH5019-Motor-Shield as an option.  If you click this, it should add the line #include "DualVNH5019-Motor-Shield.h" to the top of your code.
+
+-(OPTIONAL) Direction control board.  To prevent the system from causing itself harm by running the carriage into one of the sides, a control board was developed which uses 2 limit switches to limit motion.  If a limit switch is pressed, the carriage is stopped from moving in the direction of that limit switch, but can still move in the opposite direction.  See section 3.2.5 for more information on this.
+
+2.2.1: Steps to run the tow tank w/o direction control.
+
+Below are step by step instructions for setting up and running the tow tank.
+
+1) Power source.  Make sure the power source is working.  Plug the 24-pin connector from the ATX power supply into the distribution board (the header is polarized).  Plug the power supply into a wall outlet and turn it on.  The fan should turn on.  NOTE: If you are using a first generation power distribution board (REV 1.0), you will need to solder together the green wire with one of the black wires.  /*This is addressed in later revisions of the boards.*/
+
+2) Check power.  If the fan turns on, check the voltage levels of each of the outputs.  The power supply will output 4 different levels: Ground (GND), 3.3 volts (3V3), 5 volts (5V), and 12 volts (12V).  Using a multimeter in voltage mode, press the black probe to any exposed metal on the ground rail (lines denote which terminal blocks (green things) and barrier strips (black things) belong to which rail).  I suggest pressing the black probe to one of the screws in a ground (GND) terminal block.  Then take the red probe and connect it to the different rails.  The meter should read out approximately 3.3, 5.0 and 12.0 volts.  The board allows for higher voltages to be achieved by "stacking."  Refer to Section 3.2.4 for more information of this.
+
+3) If the power is working (the fan turns on and the voltage levels seems to be correct), connect power to the motor driver shield.  To do this, connect the 12V on the power distro to the VIN of the motor driver shield and the GND to the GND.  Do this using a wire with stripped ends and the terminal blocks.  A blue LED should turn on.
+
+4) Connect the motor to channel 1 of the motor driver shield.  Connect the output of the motor (the gray cable) to a barrier strip.  The gray cable has two spade terminal outputs.  Connect these to the long barrier strip on different strips (not across from each other).  A barrier strip connects the two connections in the same row.  From the barrier strip, connect the motor to the motor shield using a cable with a spade terminal on one end and a stripped wire on the other end.  The positive motor connection (red) should be connected to the M1A terminal connection.  The negative motor connection (black) should be connected to the M1B terminal connection.
+
+NOTE: Using "beep" mode on the multimeter checks to see if connections are made.  The multimeter will emit a beep if a short is detected between the two probes.  This is extremely useful for checking to see if connections are securely made.
+
+Use the multimeter to check that the positive terminal of the motor is connected to the M1A terminal and the negative terminal of the motor is connected to the M1B terminal.
+
+IMPORTANT NOTE: IN BEGINNING TESTING, IT IS IMPORTANT TO MAKE SURE THAT THE SYSTEM DOESN'T BREAK ITSELF.  THIS MEANS THAT YOU SHOULD HAVE YOUR HAND ON THE POWER SUPPLY SWITCH DURING TESTING AND IF THE CARRIAGE APPROACHES A SIDE, TURN OFF THE POWER.  THIS IS ADDRESSED LATER WITH THE USE OF DIRECTION LIMITING CIRCUITS AND LIMIT SWITCHES, BUT UNTIL THOSE ARE PUT IN THE SYSTEM, PROCEED WITH CAUTION.
+
+5) Test the motor.  Open the sketch (programs in Arduino are called sketches) called demo.pde (could be called demo.ino based on your version of the Arduino software downloaded).  This is in the pololu library zip file.  Connect the Arduino to the computer via USB cable (a light should go on on the Arduino) and click the upload button in the Arduino IDE (any compiling errors should be trivial and easily addressable).
+
+6) "Plug" the shield into the Arduino.  This should fit only one way.
+
+7) When the sketch is done uploading to the board (the yellow RX LED will flash while code is being uploaded onto the board), the system should start moving in the manner implemented in demo.pde.  The default (if you don't change any of the code) is to go one direction for ~1 second, speeding up along the way.  Then slow down for ~1 second to 0.  Then do the same thing in the opposite direction.  The motor should then stop for ~4 seconds.  This will then repeat.
+
+2.2.2 Steps for running the tow tank w/ direction control:
+
+Once the operation of the system is verified w/o direction control, implement the direction control.  This uses the direction control boards (small ~5cmx~5cm boards with 2 relays and other components) and 2 limit switches.
+
+The steps for doing this are basically the same, but with 1 difference.  The motor must be put in series with the direction control circuit.  The workings of this control circuit are described in section 3.2.? but the basic idea is that if a limit switch is depressed, the motor can not move in a direction that would damage the system.  
+
+To do this, take the connection between M1A and the barrier strip and "insert" the direction control circuit in this connection.
+
+The only connection that is different for this setup is the connection between M1A and the barrier strip.  The new connections should be as follows.
+
+-The positive terminal on the barrier strip (red spade terminal) should be connected to the CON1 screw terminal on the direction control board.  
+-The CON2 screw terminal should be connected to the M1A connection on the motor driver shield.  
+-Connect 12V and Ground to the board's screw terminal power connections.  
+
+The board will allow current to flow only if the connection to the limit switch is closed (connected).  The connections to the limit switches are one the 4x1 header pin on the direction control board.  The 1 and 2 pins control 1 direction and the 3 and 4 pins control the other direction.  The wiring for this connector is described in Section 3.2.5
+
+This means that to move in both directions, both 1 and 2 as well as 3 and 4 should be shorted.  To test this (without connecting the limit switches), use some metal object to short pins 1 and 2 and pins 3 and 4 (NOTE: It is ok to short 2 and 3 as well).
+
+One easy way to test this setup is to use some metal object and short pins 1 and 2 while running the demo program.  The carriage should move in one direction as expected, but not the other.  Then short 3 and 4 and the carriage should move in the other direction.
+
+NOTE:  Because the direction control board uses electromechanical relays, you will hear a click when you either make or break a connection (between 1 and 2 or 3 and 4).  This is perfectly normal.  However, you should only hear one click and if you hear multiple clicks that continue, the connection between the pins to be shorted is wrong.  Placing a precision screwdriver or allan wrench in the gap is a good way to make sure that the connection is correct.
+
+IF EVERYTHING FUNCTIONS AS EXPECTED, THE HARDWARE SHOULD ALL BE WORKING AND YOU CAN MOVE FORWARD WITH PROGRAMMING!!!
+
+Section 3 : Tow Tank Hardware
+
+3.1: Physical hardware
+
+3.1.1: The tank
+
+3.1.2: Water containment
+
+3.2: Electronic Hardware
+
+3.2.1: Motor
+
+3.2.2: Motor tachometer
+
+3.2.3: Carriage Tachometer
+
+3.2.4: Power distribution board
+
+3.2.5: Direction Control Board
+
+3.2.6: Arduino
+
+3.2.7: Pololu Motor Driver Shield
+
+3.2.8: Level Shifter
+
+
+
+Section 4 : Tow Tank Software
+
+4.1: Control software
+
+4.1.1: Arduino
+
+4.1.2: Pololu Motor Driver Shield Library
+
+4.1.3: Level shifter arduino library
+
+4.1.4: Test programs
+
+4.1.5: Serial GUI
